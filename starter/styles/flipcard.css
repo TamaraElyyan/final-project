@@ -1,9 +1,8 @@
 /* TODO: Manually optimize CSS styling. */
 /* Remove unused and unnecessary styling and selectors */
 /* Card Set Styling */
-body main div .cardSets {
+.cardSets {
   width: 85%;
-  height: 100%;
   margin: 5%;
   padding: 10px;
   border: 2px solid lightgray;
@@ -11,16 +10,15 @@ body main div .cardSets {
   box-shadow: 0 2px 5px lightgray;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-body main div .cardSets:hover {
+.cardSets:hover {
   border-color: black;
 }
 
 /* Flip Card Styling */
-body main div .cardContainer {
+.cardContainer {
   background-color: transparent;
   width: 500px;
   height: 380px;
@@ -30,7 +28,7 @@ body main div .cardContainer {
   align-items: center;
 }
 
-body main div.innerCard {
+.innerCard {
   position: relative;
   width: 100%;
   height: 100%;
@@ -43,7 +41,7 @@ body main div.innerCard {
   transform: rotateY(180deg);
 }
 
-/* Term and Description Styling */
+/* Card Faces */
 .term,
 .description {
   position: absolute;
@@ -53,8 +51,8 @@ body main div.innerCard {
   border-radius: 10%;
   border: solid grey;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   color: black;
 }
 
@@ -62,37 +60,35 @@ body main div.innerCard {
   font-size: 2rem;
 }
 
-body main div .description {
+.description {
   font-size: 1.5rem;
   background-color: #dce7e8;
   transform: rotateY(180deg);
 }
 
-/* Page and Container Layout */
-body main div .cardPageContainer {
+/* Page Layout */
+.cardPageContainer {
   width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.cardPageContainer button {
-  margin: 3%;
-}
-
 .cardPageContainer h2 {
   text-align: center;
 }
 
+.cardPageContainer button {
+  margin: 3%;
+}
+
 .setContainer {
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Navigation Buttons Styling */
+/* Navigation Buttons */
 .nextAndPrevBtnContainer {
   display: flex;
   justify-content: space-around;
@@ -103,12 +99,12 @@ body main div .cardPageContainer {
   width: 45%;
 }
 
-/* Miscellaneous */
+/* Toggle Form */
 .toggle_form {
   text-align: center;
 }
 
-/* Media Query for Tablets (768px and below) */
+/* Tablets */
 @media (max-width: 768px) {
   .cardContainer {
     width: 90%;
@@ -138,7 +134,7 @@ body main div .cardPageContainer {
   }
 }
 
-/* Media Query for Mobile Devices (480px and below) */
+/* Mobile */
 @media (max-width: 480px) {
   .cardContainer {
     width: 100%;

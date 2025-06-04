@@ -1,0 +1,30 @@
+{
+  "name": "nd0011-c4-starter",
+  "version": "1.0.0",
+  "description": "In this Project Students will optimize and test a front-end web application called Study Night, a flashcard tool. Using the skills gained throughout this course, they will create tests to ensure product quality, install and configure necessary project dependencies, and optimize and automate the application tasks.",
+  "type": "module",
+  "scripts": {
+    "gulp": "gulp",
+    "start": "gulp",
+    "test": "mocha test/shuffle.test.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "chai": "^5.2.0",
+    "cypress": "^14.4.0",
+    "eslint": "^8.40.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.2.0",
+    "gulp": "^5.0.1",
+    "gulp-cli": "^3.1.0",
+    "gulp-shell": "^0.8.0",
+    "mocha": "^11.5.0",
+    "parcel": "^2.15.2"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}

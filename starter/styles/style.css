@@ -1,16 +1,7 @@
-/* General Styling */
-
-
-li {
-  list-style: none;
-}
-
-
 body {
   display: flex;
   flex-direction: row;
   font-family: 'Inter', sans-serif;
-
 }
 
 main {
@@ -19,7 +10,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+li {
+  list-style: none;
 }
 
 .notVisible {
@@ -33,9 +27,10 @@ button {
   text-transform: uppercase;
   padding: 10px;
   font-weight: bold;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
+/* Tablets */
 @media (max-width: 768px) {
   body {
     flex-direction: row;

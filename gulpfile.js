@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import shell from 'gulp-shell';
 
 // Define tasks using gulp and shell
-gulp.task('serve', shell.task('parcel serve starter/src/index.js'));
+gulp.task('serve', shell.task('parcel serve starter/index.html'));
 
 // Task to build the project using Parcel
 gulp.task('build', shell.task('parcel build starter/src/index.js'));

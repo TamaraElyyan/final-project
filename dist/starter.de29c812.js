@@ -160,11 +160,11 @@
       });
     }
   }
-})({"8Y4u7":[function(require,module,exports,__globalThis) {
+})({"9mUY7":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 3000;
+var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -710,25 +710,25 @@ var _createSetJs = require("./createSet.js");
 var _utilityRenderFunctionsJs = require("./utilityRenderFunctions.js");
 const renderCardSetsPage = ()=>{
     // Creates a container for the pages contents
-    const container = document.createElement("div");
-    container.className = "cardPageContainer";
+    const container = document.createElement('div');
+    container.className = 'cardPageContainer';
     // Creates the header for the page
-    const pageHeader = (0, _utilityRenderFunctionsJs.createHeader)("h2", "Study Set Library", "study-set-header");
+    const pageHeader = (0, _utilityRenderFunctionsJs.createHeader)('h2', 'Study Set Library', 'study-set-header');
     // Function creates the element representing the study card set
     const sets = createCardSets();
     // Function responsible for creating the form to create a new study set.
     const form = (0, _createSetJs.createSetForm)((0, _dataJs.cardSets));
     // Sets the form to be invisible
     //Creates a button that will toggle the forms visibility
-    const toggleFormButton = (0, _utilityRenderFunctionsJs.createToggleButton)("Add New Set", form);
+    const toggleFormButton = (0, _utilityRenderFunctionsJs.createToggleButton)('Add New Set', form);
     // Attribute used for selecting the forms during Cypress tests.
-    toggleFormButton.setAttribute("data-cy", "toggle_form");
+    toggleFormButton.setAttribute('data-cy', 'toggle_form');
     //Appends all the content to the pages container
     container.append(pageHeader, sets, toggleFormButton, form);
     //Gets the main section of the dom
-    const main = document.querySelector("main");
+    const main = document.querySelector('main');
     // Clears the main section of any existing content.
-    main.innerHTML = "";
+    main.innerHTML = '';
     //Appends content to the DOM
     main.append(container);
 };
@@ -737,20 +737,20 @@ const renderCardSetsPage = ()=>{
 // Takes the current study set and the sets container as arguments
 const createSetPreviewCard = (set, setContainer)=>{
     // Container for study set
-    const setCard = document.createElement("ul");
-    setCard.className = "cardSets";
+    const setCard = document.createElement('ul');
+    setCard.className = 'cardSets';
     // Dynamic attribute used to select a study set during testing.
-    setCard.setAttribute("data-cy", set.id);
+    setCard.setAttribute('data-cy', set.id);
     // Creates the Study Sets Title element
-    const liTitle = document.createElement("li");
+    const liTitle = document.createElement('li');
     liTitle.textContent = set.title;
     // Creates the Study Sets Number of Terms element
-    const liNumberOfTerms = document.createElement("li");
+    const liNumberOfTerms = document.createElement('li');
     liNumberOfTerms.textContent = `Terms: ${set.cards.length}`;
     // Adds an event listener to the study set.
     // On click, the current page will clear, and the full study set will be rendered.
-    setCard.addEventListener("click", ()=>{
-        document.querySelector("main").innerHTML = "";
+    setCard.addEventListener('click', ()=>{
+        document.querySelector('main').innerHTML = '';
         (0, _cardsPageJs.renderFlashCards)(set.cards);
     });
     // Appends elements to the set preview
@@ -761,8 +761,8 @@ const createSetPreviewCard = (set, setContainer)=>{
 // Iterates through the study sets and dynamically creates their DOM elements.
 const createCardSets = ()=>{
     // Creates a container for the sets
-    const setContainer = document.createElement("ul");
-    setContainer.className = "setContainer";
+    const setContainer = document.createElement('ul');
+    setContainer.className = 'setContainer';
     // Iterates though the sets and creates their dom elements dynamically
     (0, _dataJs.cardSets).forEach((set)=>createSetPreviewCard(set, setContainer));
     return setContainer;
@@ -788,9 +788,9 @@ var _utilityRenderFunctionsJs = require("./utilityRenderFunctions.js");
 // This generates one side of a flashcard card
 const renderSide = (text, className)=>{
     // Creates a container element for the card
-    const div = document.createElement("div");
+    const div = document.createElement('div');
     // Creates the paragraph that will hold the text content
-    const p = document.createElement("p");
+    const p = document.createElement('p');
     p.textContent = text;
     div.className = className;
     //Appends the content to the container
@@ -801,16 +801,16 @@ const renderSide = (text, className)=>{
 // Takes a card as an argument
 const generateFlashCard = (card)=>{
     // Creates the Term side
-    const termSide = renderSide(card.term, "term");
+    const termSide = renderSide(card.term, 'term');
     // Creates the description side
-    const descriptionSide = renderSide(card.description, "description");
+    const descriptionSide = renderSide(card.description, 'description');
     // Creates an inner card that will help with the Flash Card animation
-    const innerCard = document.createElement("div");
-    innerCard.className = "innerCard";
+    const innerCard = document.createElement('div');
+    innerCard.className = 'innerCard';
     innerCard.append(termSide, descriptionSide);
     // Creates a container for the card
-    const cardContainer = document.createElement("div");
-    cardContainer.className = "cardContainer";
+    const cardContainer = document.createElement('div');
+    cardContainer.className = 'cardContainer';
     cardContainer.append(innerCard);
     return cardContainer;
 };
@@ -819,49 +819,49 @@ const generateFlashCard = (card)=>{
 // Takes a study set and a current index as arguments
 const renderFlashCards = (set, index = 0)=>{
     // Clear the main content area
-    const main = document.querySelector("main");
-    main.innerHTML = "";
+    const main = document.querySelector('main');
+    main.innerHTML = '';
     // Creates a container for the page
-    const container = document.createElement("div");
-    container.className = "cardPageContainer";
+    const container = document.createElement('div');
+    container.className = 'cardPageContainer';
     // If we are not at the end of the study set
     // Create the flash card at the current index
     if (set.length !== 0) {
         const currentCard = generateFlashCard(set[index]);
         // creates Previous button
-        const previousBtn = createNavigationButton("Previous", ()=>{
+        const previousBtn = createNavigationButton('Previous', ()=>{
             // If the current index is 0, set the index to the last item in the set.
             // Allows us to loop to the end of the set
             index = index > 0 ? index - 1 : set.length - 1;
             renderFlashCards(set, index);
         });
         //Creates next button
-        const nextBtn = createNavigationButton("Next", ()=>{
+        const nextBtn = createNavigationButton('Next', ()=>{
             // If the current index is at the last item in the set, set the index to 0.
             // Allows us to loop to the start of the set
             index = index < set.length - 1 ? index + 1 : 0;
             renderFlashCards(set, index);
         });
         //Creates a container for out buttons
-        const nextAndPrevBtn = document.createElement("div");
+        const nextAndPrevBtn = document.createElement('div');
         nextAndPrevBtn.append(previousBtn, nextBtn);
-        nextAndPrevBtn.className = "nextAndPrevBtnContainer";
+        nextAndPrevBtn.className = 'nextAndPrevBtnContainer';
         //Appends card and buttons to the page container
         container.append(currentCard, nextAndPrevBtn);
     }
     // Generates from for creating cards
     const form = (0, _createCard.renderCardForm)(set);
     // Sets form to be invisible
-    form.className = "notVisible";
+    form.className = 'notVisible';
     // Creates button for toggling the form
-    const addCardBtn = (0, _utilityRenderFunctionsJs.createToggleButton)("Add New Card", form);
-    addCardBtn.setAttribute("data-cy", "toggle_form");
+    const addCardBtn = (0, _utilityRenderFunctionsJs.createToggleButton)('Add New Card', form);
+    addCardBtn.setAttribute('data-cy', 'toggle_form');
     // Creates button for shuffling the cards
-    const shuffleBtn = document.createElement("button");
-    shuffleBtn.textContent = "Shuffle Cards";
+    const shuffleBtn = document.createElement('button');
+    shuffleBtn.textContent = 'Shuffle Cards';
     // Adds an event listener to the shuffle button.
     // On click, the flashcards will be shuffled.
-    shuffleBtn.addEventListener("click", ()=>shuffleCards(set));
+    shuffleBtn.addEventListener('click', ()=>shuffleCards(set));
     // Appends cards form and shuffle button to the page containers
     container.append(shuffleBtn, addCardBtn, form);
     // Appends the container to the dom
@@ -869,9 +869,9 @@ const renderFlashCards = (set, index = 0)=>{
 };
 // Creates a navigation button
 const createNavigationButton = (text, onClick)=>{
-    const btn = document.createElement("button");
+    const btn = document.createElement('button');
     btn.textContent = text;
-    btn.addEventListener("click", onClick);
+    btn.addEventListener('click', onClick);
     return btn;
 };
 const shuffleCards = (set)=>{
@@ -895,38 +895,38 @@ var _utilityRenderFunctionsJs = require("./utilityRenderFunctions.js");
 // This function will generate the create card form
 const renderCardForm = (set)=>{
     // Create a header for the form
-    const h3 = (0, _utilityRenderFunctionsJs.createHeader)("h3", "Create Cards", "create_cards");
+    const h3 = (0, _utilityRenderFunctionsJs.createHeader)('h3', 'Create Cards', 'create_cards');
     // Creates form element
-    const cardForm = document.createElement("form");
+    const cardForm = document.createElement('form');
     // Sets an attribute that will be used to select the form during testing
-    cardForm.setAttribute("data-cy", "card_form");
+    cardForm.setAttribute('data-cy', 'card_form');
     // Creates a label for the Term input
-    const termLabel = (0, _utilityRenderFunctionsJs.createLabel)("Term", "termInput");
+    const termLabel = (0, _utilityRenderFunctionsJs.createLabel)('Term', 'termInput');
     // Creates input for the term
-    const termInput = (0, _utilityRenderFunctionsJs.createInput)("termInput");
+    const termInput = (0, _utilityRenderFunctionsJs.createInput)('termInput');
     // Creates label for description
-    const descriptionLabel = (0, _utilityRenderFunctionsJs.createLabel)("Description", "descriptionInput");
+    const descriptionLabel = (0, _utilityRenderFunctionsJs.createLabel)('Description', 'descriptionInput');
     // Creates input for description
-    const descriptionInput = (0, _utilityRenderFunctionsJs.createInput)("descriptionInput");
+    const descriptionInput = (0, _utilityRenderFunctionsJs.createInput)('descriptionInput');
     //Creates submit input
-    const addCardBtn = (0, _utilityRenderFunctionsJs.createSubmitButton)("Add Card");
+    const addCardBtn = (0, _utilityRenderFunctionsJs.createSubmitButton)('Add Card');
     // Handle form submission ane errors
-    cardForm.addEventListener("submit", (e)=>{
+    cardForm.addEventListener('submit', (e)=>{
         // Prevents forms default behavior
         e.preventDefault();
         // Gets the input values from term and description
         const term = e.target.termInput.value;
         const description = e.target.descriptionInput.value;
         // Handles error if user enters an empty string in any of the inputs
-        if (!term && !description) (0, _errorsJs.showError)("TERM AND DESCRIPTION CANNOT BE EMPTY");
-        else if (!term) (0, _errorsJs.showError)("TERM CANNOT BE EMPTY");
-        else if (!description) (0, _errorsJs.showError)("DESCRIPTION CANNOT BE EMPTY");
+        if (!term && !description) (0, _errorsJs.showError)('TERM AND DESCRIPTION CANNOT BE EMPTY');
+        else if (!term) (0, _errorsJs.showError)('TERM CANNOT BE EMPTY');
+        else if (!description) (0, _errorsJs.showError)('DESCRIPTION CANNOT BE EMPTY');
         else addCard(term, description, set);
     });
     // Append form elements to the form
     cardForm.append(termLabel, termInput, descriptionLabel, descriptionInput, addCardBtn);
     // Creates a container for the form elements and header
-    const container = document.createElement("div");
+    const container = document.createElement('div');
     container.append(h3, cardForm);
     return container;
 };
@@ -946,13 +946,13 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "showError", ()=>showError);
 const showError = (message)=>{
-    const form = document.querySelector("form");
-    const existingError = document.querySelector(".error");
+    const form = document.querySelector('form');
+    const existingError = document.querySelector('.error');
     if (!existingError) {
-        const error = document.createElement("p");
+        const error = document.createElement('p');
         error.textContent = message;
-        error.style.color = "red";
-        error.className = "error";
+        error.style.color = 'red';
+        error.className = 'error';
         form.appendChild(error);
     } else if (existingError.textContent !== message) existingError.textContent = message;
 };
@@ -1069,19 +1069,19 @@ var _utilityRenderFunctionsJs = require("./utilityRenderFunctions.js");
 // This function generates the form for creating new study sets
 const createSetForm = (setCards)=>{
     // Generates the new form element
-    const form = document.createElement("form");
+    const form = document.createElement('form');
     // Sets an attribute that will be used to select the form during testing
-    form.setAttribute("data-cy", "set_form");
+    form.setAttribute('data-cy', 'set_form');
     // Sets the form to invisible
-    form.className = "notVisible";
+    form.className = 'notVisible';
     //Creates the label for the title input
-    const label = (0, _utilityRenderFunctionsJs.createLabel)("Card Set Title", "titleInput");
+    const label = (0, _utilityRenderFunctionsJs.createLabel)('Card Set Title', 'titleInput');
     // Creates the input fot the title
-    const input = (0, _utilityRenderFunctionsJs.createInput)("titleInput");
-    const submitButton = (0, _utilityRenderFunctionsJs.createSubmitButton)("Submit Set");
+    const input = (0, _utilityRenderFunctionsJs.createInput)('titleInput');
+    const submitButton = (0, _utilityRenderFunctionsJs.createSubmitButton)('Submit Set');
     // Adds an event listener to the form.
     // On submission, a new study set will be created.
-    form.addEventListener("submit", (e)=>submitSet(e, setCards));
+    form.addEventListener('submit', (e)=>submitSet(e, setCards));
     //Adds elements to the form
     form.append(label, input, submitButton);
     return form;
@@ -1095,7 +1095,7 @@ const submitSet = (e, setCards)=>{
     //Get value form title input
     const title = e.target.titleInput.value;
     // Errors if user entered an empty string
-    if (!title) (0, _errorsJs.showError)("TITLE CANNOT BE EMPTY");
+    if (!title) (0, _errorsJs.showError)('TITLE CANNOT BE EMPTY');
     else {
         //Creates set object
         const id = setCards.length ? setCards[setCards.length - 1].id + 1 : 1;
@@ -1179,6 +1179,6 @@ const renderHomePage = ()=>{
     main.append(homeContainer);
 };
 
-},{"../images/homePage.png":"9QOwg","./utilityRenderFunctions.js":"7Z6eA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9QOwg":[function() {},{}]},["8Y4u7","dkgmw"], "dkgmw", "parcelRequireaca2", {})
+},{"../images/homePage.png":"9QOwg","./utilityRenderFunctions.js":"7Z6eA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9QOwg":[function() {},{}]},["9mUY7","dkgmw"], "dkgmw", "parcelRequireaca2", {})
 
 //# sourceMappingURL=starter.de29c812.js.map
